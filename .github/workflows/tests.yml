@@ -38,13 +38,12 @@ jobs:
       - name: Checkout to working directory
         uses: actions/checkout@v5
 
+      - uses: actions/checkout@v5
       - name: Run Easy tests
-        uses: actions/checkout@v5
         env:
           PR_USER: ${{ github.event.pull_request.user.login }}
           PR_DATE: ${{ github.event.pull_request.created_at}}
         run: |
-          pwd
           chmod +x ./easy.sh
           ./easy.sh $PR_USER $PR_DATE
 
